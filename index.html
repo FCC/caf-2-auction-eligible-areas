@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Connect America Phase II Auction: Final Eligible Areas - FCC Maps</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <main class="map-container">
+        <div id="btn-openLayerCtrl" class="esri-ui-corner">
+            <div class="icon-layers esri-component esri-widget-button esri-widget"></div>
+        </div>        
+        <div id="map"></div>
+        <div class="map-legend">
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="3"><span class="icon icon-list"></span> <span class="map-legend-name">Map Legend</span>
+                            <button id="btn-closeLegend" class="btn btn-xs pull-right"><span class="icon icon-close"></span> <span class="sr-only">Hide legend</span></button>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="key-symbol" style="background-color:#F1A340"></div>
+                        </td>
+                        <td>Auction-eligible blocks</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="key-symbol" style="background-color:#998EC3 "></div>
+                        </td>
+                        <td>Auction-eligible block groups (bidding units)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="btn-openLegend" class="btn legend__icon" title="Map Legend"><span class="icon icon-list"></span></button>
+    </main>
+    <script>
+    window.layers = [
+        "https://fcc.maps.arcgis.com/sharing/rest/content/items/18ce5c321f8e4a73b46c178f828ae34a/resources/styles/root.json?f=pjson"
+    ];
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="../js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+    <script src="https://js.arcgis.com/4.3/"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
