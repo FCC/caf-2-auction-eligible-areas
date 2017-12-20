@@ -3,12 +3,13 @@ require([
         'esri/views/MapView',
         'esri/Basemap',
         'esri/layers/VectorTileLayer',
+        'esri/layers/FeatureLayer',
         'esri/layers/WebTileLayer',
         'esri/widgets/Search',
         'esri/widgets/Home',
         'esri/widgets/Locate'
     ],
-    function(Map, MapView, Basemap, VectorTileLayer, WebTileLayer, Search, Home, Locate) {
+    function(Map, MapView, Basemap, VectorTileLayer, FeatureLayer, WebTileLayer, Search, Home, Locate) {
         var map, view, searchWidget, homeBtn, locateBtn;
         var layers = window.layers;
         var featLayers = [];
@@ -19,7 +20,7 @@ require([
             subDomains: ['a', 'b', 'c', 'd'],
             copyright: '\u00A9 OpenStreetMap contributors Design \u00A9 Mapbox'
         });
-        
+
         // Create base map from Mapbox layer
         var mapBox = new Basemap({
             baseLayers: [mapBaseLayer],
@@ -73,17 +74,28 @@ require([
             position: 'top-left'
         });
 
-        // Create tile layers
-        for (var j = 0, layersLen = layers.length; j < layersLen; j++) {
-            var tileLayer = new VectorTileLayer({
-                url: layers[j]
+        var template = {
+            title: 'caf2_auction_cam_auction_cbg_geom',
+            content: '<ul style="margin-top: 0"><li>cbg_fips = {cbg_fips}</li><li>reserve_price = {reserve_price}</li><li>locations = {locations}</li><ul>'
+        };
+
+        // Create vector tile layer
+        var tileLayer = new VectorTileLayer({
+                url: 'https://fcc.maps.arcgis.com/sharing/rest/content/items/fcbf4a2ce16d404b9f2d60e249de76ed/resources/styles/root.json?f=pjson'
             });
 
-            featLayers.push(tileLayer);
-        }
+        // Create feature layers
+        var fLayer = new FeatureLayer({
+            url: "https://services.arcgis.com/YnOQrIGdN9JGtBh4/arcgis/rest/services/CAF2_Auction_CBG_Data/FeatureServer",
+            outFields: ["*"]
+        });
+
+        fLayer.popupTemplate = template;
 
         // Add tile layers to map
-        map.addMany(featLayers);
+        map.add(fLayer);
+        map.add(tileLayer);     
+
 
         // bind radio button event            
         // var radios = document.layerControl.layerOpts;
