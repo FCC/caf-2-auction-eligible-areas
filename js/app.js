@@ -81,7 +81,7 @@ require([
 
       // Create vector tile layer
       var tileLayer = new VectorTileLayer({
-        url: 'https://tiles.arcgis.com/tiles/YnOQrIGdN9JGtBh4/arcgis/rest/services/CAF2_Auction_Eligible_Areas_30jan18/VectorTileServer/resources/styles/root.json?f=pjson'
+        url: 'https://tiles.arcgis.com/tiles/YnOQrIGdN9JGtBh4/arcgis/rest/services/CAF2_Auction_Eligible_Areas_30jan18_fix/VectorTileServer/resources/styles/root.json?f=pjson'
       })
 
       // Create feature layers
