@@ -16,8 +16,7 @@ require([
 
         // Create base layer from Mapbox street layer
       var mapBaseLayer = new WebTileLayer({
-        urlTemplate: 'https://{subDomain}.tiles.mapbox.com/v4/fcc.k74ed5ge/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg',
-        subDomains: ['a', 'b', 'c', 'd'],
+        urlTemplate: 'https://api.mapbox.com/styles/v1/fcc/ckh108wiu0bjw19sc7zu16zgt/tiles/256/{level}/{col}/{row}?access_token=pk.eyJ1IjoiZmNjIiwiYSI6InBiaGMyLU0ifQ.LOmVYpUCFv2yWpbvxDdQNg',
         copyright: '\u00A9 OpenStreetMap contributors Design \u00A9 Mapbox'
       })
 
